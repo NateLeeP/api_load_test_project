@@ -7,3 +7,7 @@ class PersonSchema(BaseModel):
 
     class Config:
         from_attributes = True
+
+
+class PersonCreate(BaseModel):
+    name: str
