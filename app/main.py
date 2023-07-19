@@ -16,7 +16,7 @@ def root():
 @app.get("/person/{person_id}", status_code=200, response_model=PersonSchema)
 def get_person(person_id: int):
     with SessionLocal() as db_session:
-        person = db_session.query(Person).get(1)
+        person = db_session.query(Person).get(person_id)
         return person
 
 
