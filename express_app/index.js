@@ -1,16 +1,25 @@
 const express = require('express')
 const app = express()
 const personRouter = require('./routes/person')
+const sequelize = require('./models/person.js')
 
 // Even this can be considered "middleware" - since it has access to request and respons
 // It is the end of the stack because there is no 'end'. 
 app.get('/', function (req, res) {
 
-    res.send({"name": "Nate P"})
+    res.send({ "name": "Nate P" })
 })
 
 app.use('/person', personRouter)
 
-app.listen(3000, () => {
+app.listen(3000, async () => {
     console.log("Listening at port 3000!")
+    // try {
+    //     await sequelize.authenticate()
+    //     const newUser = sequelize.models.Person.build({ id: 5, name: 'Nate The Great' })
+    //     await newUser.save()
+    //     console.log("Connection to sqlite DB been established")
+    // } catch (error) {
+    //     console.error("Unable to connect")
+    // }
 })
