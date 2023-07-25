@@ -48,18 +48,12 @@ const Person = sequelize.define('Person', {
 async function main() {
     try {
         await sequelize.authenticate()
-        await sequelize.models.User.sync({ force: true })
-        console.log("Successfully connected")
+        await sequelize.sync()
+        console.log("Successfully connected and synced")
+        const persons = await Person.findAll()
+        console.log(persons)
     } catch (error) {
         console.error("Unable to connect", error)
-    }
-
-    try {
-        const nate = User.build({ name: 'Nate', favoriteColor: 'blue', age: 28, cash: 100 })
-        await nate.save()
-        console.log('Saved nate')
-    } catch (error) {
-        console.error(error)
     }
 }
 

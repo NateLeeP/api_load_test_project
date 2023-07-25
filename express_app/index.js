@@ -14,12 +14,12 @@ app.use('/person', personRouter)
 
 app.listen(3000, async () => {
     console.log("Listening at port 3000!")
-    // try {
-    //     await sequelize.authenticate()
-    //     const newUser = sequelize.models.Person.build({ id: 5, name: 'Nate The Great' })
-    //     await newUser.save()
-    //     console.log("Connection to sqlite DB been established")
-    // } catch (error) {
-    //     console.error("Unable to connect")
-    // }
+    try {
+        await sequelize.authenticate()
+        await sequelize.sync()
+        console.log("Successfully connected and synced")
+        console.log("Connection to sqlite DB been established")
+    } catch (error) {
+        console.error("Unable to connect")
+    }
 })

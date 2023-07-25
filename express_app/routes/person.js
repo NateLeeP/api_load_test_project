@@ -1,8 +1,10 @@
 const express = require('express')
-
+const sequelize = require('../models/person.js')
 const router = express.Router()
 
-router.get('/', function (req, res) {
+router.get('/', async function (req, res) {
+    const persons = await sequelize.models.Person.findAll()
+    console.log(persons)
     res.send({'name': "Nathaniel", "id": 1})
 })
 

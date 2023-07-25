@@ -1,5 +1,4 @@
 const { Sequelize, DataTypes } = require('sequelize');
-const { options } = require('../routes/person');
 
 const sequelize = new Sequelize(
     {
@@ -8,12 +7,13 @@ const sequelize = new Sequelize(
     }
 )
 const Person = sequelize.define('Person', {
-    id: { type: DataTypes.INTEGER, primaryKey: true },
+    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     name: DataTypes.STRING,
 }, {
     tableName: 'person',
     timestamps: false
 })
+
 
 
 
