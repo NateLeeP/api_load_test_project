@@ -2,7 +2,7 @@ const { Sequelize, DataTypes } = require('sequelize')
 
 const sequelize = new Sequelize({
     dialect: 'sqlite',
-    storage: '../app/db.sqlite3'
+    storage: '/home/npruitt/repos/api_load_test_project/db.sqlite3'
 })
 
 const User = sequelize.define('User', {
@@ -57,5 +57,4 @@ async function main() {
     }
 }
 
-
-main()
+module.exports =  sequelize

@@ -5,11 +5,8 @@ const sequelize = require('./models/person.js')
 
 // Even this can be considered "middleware" - since it has access to request and respons
 // It is the end of the stack because there is no 'end'. 
-app.get('/', function (req, res) {
 
-    res.send({ "name": "Nate P" })
-})
-
+app.use(express.json())
 app.use('/person', personRouter)
 
 app.listen(3000, async () => {
