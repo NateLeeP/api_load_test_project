@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon ./index.js"
+    "start": "nodemon ./index.js",
+    "load-test": "k6 run ../load_testing/load_test.js --out csv=/home/npruitt/repos/csv_files/express_app_load_test_timeseries_data.csv"
   },
   "author": "",
   "license": "ISC",
