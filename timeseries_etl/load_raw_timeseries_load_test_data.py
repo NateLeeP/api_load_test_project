@@ -1,6 +1,6 @@
 import pandas as pd
 
-def load_loadtest_timeseries_from_csv(path_to_csv: str):
+def load_timeseries_from_csv(path_to_csv: str):
     """
     Return pandas DF with metrics http_req_duration, http_req_failed, http_reqs (iteration)
     
@@ -14,7 +14,7 @@ def load_loadtest_timeseries_from_csv(path_to_csv: str):
     return raw_timeseries_df
 
 def main():
-    df = load_loadtest_timeseries_from_csv('/home/npruitt/repos/csv_files/express_app_load_test_timeseries_data.csv')
+    df = load_timeseries_from_csv('/home/npruitt/repos/csv_files/express_app_load_test_timeseries_data.csv')
     print(df.head())
 
 if __name__ == "__main__":
