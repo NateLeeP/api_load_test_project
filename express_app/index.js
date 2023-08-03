@@ -9,6 +9,9 @@ const sequelize = require('./models/person.js')
 app.use(express.json())
 app.use('/person', personRouter)
 
+app.get('/', async (req, res) => {
+    res.send('Hello World')
+})
 app.listen(3000, async () => {
     console.log("Listening at port 3000!")
     try {

@@ -14,14 +14,14 @@ def root():
 
 
 @app.get("/person/{person_id}", status_code=200, response_model=PersonSchema)
-def get_person(person_id: int):
+async def get_person(person_id: int):
     with SessionLocal() as db_session:
         person = db_session.query(Person).get(person_id)
         return person
 
 
 @app.get("/person", status_code=200, response_model=List[PersonSchema])
-def get_all_person():
+async def get_all_person():
     with SessionLocal() as db_session:
         persons = db_session.query(Person).all()
         return persons
