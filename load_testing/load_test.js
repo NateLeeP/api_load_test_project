@@ -9,7 +9,7 @@ export const options = {
         { duration: '30s', target: 0 },
     ],
     summaryTrendStats: ["med", "p(99)", "p(95)"],
-    
+
 };
 const metrics_to_exclude = [
     "data_received",
@@ -38,6 +38,6 @@ export function handleSummary(data) {
 }
 
 export default function () {
-    http.get('http://127.0.0.1:3000/person/1');
+    http.get(`http://127.0.0.1:${__ENV.PORT}/`);
     sleep(1)
 }
