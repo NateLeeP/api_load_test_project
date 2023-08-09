@@ -4,13 +4,15 @@ import { textSummary } from 'https://jslib.k6.io/k6-summary/0.0.2/index.js'
 
 export const options = {
     stages: [
-        { duration: '30s', target: 100 },
-        { duration: '1m', target: 100 },
-        { duration: '30s', target: 0 },
+        { duration: '30s', target: 50 },
+        { duration: '1m30s', target: 300 },
+        { duration: '30s', target: 50 },
+        { duration: '30s', target: 0 }
     ],
     summaryTrendStats: ["med", "p(99)", "p(95)"],
 
 };
+
 const metrics_to_exclude = [
     "data_received",
     "data_sent",
