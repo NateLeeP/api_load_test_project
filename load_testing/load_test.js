@@ -4,9 +4,10 @@ import { textSummary } from 'https://jslib.k6.io/k6-summary/0.0.2/index.js'
 
 export const options = {
     stages: [
-        { duration: '30s', target: 100 },
         { duration: '1m', target: 100 },
-        { duration: '30s', target: 0 },
+        { duration: '1m', target: 100 },
+        { duration: '30s', target: 50 },
+        { duration: '30s', target: 0 }
     ],
     summaryTrendStats: ["med", "p(99)", "p(95)"],
 
@@ -25,6 +26,7 @@ const metrics_to_exclude = [
     "vus_max"
 ]
 export function handleSummary(data) {
+    const appName = __ENV.PORT == 3000 ? 'express' : 'fastapi'
     for (const key in data.metrics) {
         if (metrics_to_exclude.includes(key)) {
             delete data.metrics[key]
@@ -33,7 +35,7 @@ export function handleSummary(data) {
 
     return {
         stdout: textSummary(data, { indent: ' ', enableColors: true }),
-        './summary_output.json': JSON.stringify(data)
+        [`../timeseries_etl/summary_outputs/summary_output_load_${appName}.json`]: JSON.stringify(data)
     }
 }
 

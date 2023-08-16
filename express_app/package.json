@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon ./index.js",
     "load-test": "k6 -e PORT=$PORT run ../load_testing/load_test.js --out csv=../timeseries_etl/csv/$CSV.csv",
-    "stress-test": "k6 -e PORT=$PORT run ../load_testing/stress_test.js --out csv=../timeseries_etl/csv/$CSV.csv"
+    "stress-test": "k6 -e PORT=$PORT run ../load_testing/stress_test.js --out csv=../timeseries_etl/csv/$CSV.csv",
+    "spike-test": "k6 -e PORT=$PORT run ../load_testing/spike_test.js --out csv=../timeseries_etl/csv/$CSV.csv"
   },
   "author": "",
   "license": "ISC",
