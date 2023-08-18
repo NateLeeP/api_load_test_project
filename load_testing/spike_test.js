@@ -6,8 +6,9 @@ export const options = {
     stages: [
         { duration: '1m', target: 50 },
         { duration: '15s', target: 1000 },
+        { duration: '15s', target: 50 },
         { duration: '1m', target: 50 },
-        { duration: '45s', target: 0 }
+        { duration: '30s', target: 0 }
     ],
     summaryTrendStats: ["med", "p(99)", "p(95)"],
 
@@ -27,8 +28,6 @@ const metrics_to_exclude = [
     "vus_max"
 ]
 export function handleSummary(data) {
-    const appName = __ENV.PORT == 3000 ? 'express' : 'fastapi'
-    const summaryOutputPath = `./summary_output_spike_${appName}.json`
     for (const key in data.metrics) {
         if (metrics_to_exclude.includes(key)) {
             delete data.metrics[key]
@@ -37,7 +36,7 @@ export function handleSummary(data) {
 
     return {
         stdout: textSummary(data, { indent: ' ', enableColors: true }),
-        [summaryOutputPath]: JSON.stringify(data)
+        [`../timeseries_etl/summary_outputs/summary_output_spike_${__ENV.APP}.json`]: JSON.stringify(data)
     }
 }
 
