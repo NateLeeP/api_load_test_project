@@ -24,7 +24,7 @@ var albums = []album{
 func main() {
 	router := gin.Default()
 	router.GET("/albums", getAlbums)
-
+    router.GET("/", getResponse)
 	router.Run("localhost:8080")
 }
 
@@ -33,3 +33,7 @@ func getAlbums(c *gin.Context) {
     c.IndentedJSON(http.StatusOK, albums)
 }
 
+// return JSON response
+func getResponse(c *gin.Context) {
+    c.JSON(http.StatusOK, map[string]string{"message": "Hello"})
+}
